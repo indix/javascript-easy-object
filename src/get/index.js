@@ -10,10 +10,11 @@ export default class Get {
   }
 
   callback(result) {
-    if (!result) {
+    if (!result && !this.result.length) {
       throw new Error('No value found for specified path')
+    } else if (result) {
+      this.result.push(result)
     }
-    this.result.push(result)
   }
 
   get() {
