@@ -1,0 +1,1 @@
+# javascript-easy-object
