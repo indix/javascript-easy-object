@@ -43,4 +43,29 @@ describe('JS easy object', () => {
     done()
   });
 
+  it('should skip any level and find the given path value', (done) => {
+    const jeo = new JEO()
+    const result = jeo.get({
+      a: {
+        b: {
+          z: 'z'
+        },
+        c: {
+          z: {
+            y: 'Y'
+          }
+        },
+        d: 'x',
+        e: {
+          f: {
+            z: 'M'
+          }
+        }
+      }
+    },
+    'a\\.*\\.z')
+    expect(result).to.be.deep.equal([ 'z', { y: 'Y' }, 'M' ])
+    done()
+  });
+
 })
