@@ -23,7 +23,7 @@
     "object",
     "object pattern",
     "pattern search",
-    "object search",
+    "object search"
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
