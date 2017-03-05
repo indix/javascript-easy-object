@@ -88,10 +88,12 @@ output: ['z1', 'z2', 'z3', 'z4']
 ```
 ### Usage
 Above patterns can be composed with each other or can be used separately as per your need. With the above patterns you can do following actions :
+```
      1. Get
      2. Put
      3. Delete
      4. Rename
+```
 Get, put, delete method are well known actions. Rename action allows you to rename the key that is present in the object.
 
 snippet :
