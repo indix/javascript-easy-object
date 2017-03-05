@@ -1,19 +1,18 @@
 import Traversal from '../traversal';
 
-export default class Put extends Traversal {
+export default class Delete extends Traversal{
 
   constructor(props) {
     super(props)
-    this.path = props.path
-    this.value = props.value
     this.object = props.object
+    this.path = props.path
   }
 
   processTraverse(object, par, property) {
-    par[property] = this.value
+    delete par[property]
   }
 
-  put() {
+  delete() {
     this.traverse(this.object)
     return this.object
   }
