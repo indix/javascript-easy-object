@@ -1,7 +1,8 @@
 export default class Path {
 
-  constructor(path) {
+  constructor(path, delimitor) {
     this.path = []
+    this.delimitor = delimitor
     this.constructPath(path)
   }
 
@@ -17,7 +18,7 @@ export default class Path {
   }
 
   constructPath(path) {
-    path.split('\\.').map((item) => {
+    path.split(this.delimitor).map((item) => {
       switch (item[0]) {
         case '[':
           return this.path.push(this.constructKeys(item.trim()))
