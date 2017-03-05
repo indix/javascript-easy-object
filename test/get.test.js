@@ -2,7 +2,7 @@ import { expect } from 'chai'
 
 import JEO from '../src'
 
-xdescribe('JS easy object Get', () => {
+describe('JS easy object Get', () => {
 
   it('should return correct value', (done) => {
     const jeo = new JEO()

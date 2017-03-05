@@ -10,7 +10,9 @@ export default class Put extends Traversal {
   }
 
   processTraverse(object, par, property) {
-    par[property] = this.value
+    if (typeof par === 'object') {
+      par[property] = this.value
+    }
   }
 
   put() {
