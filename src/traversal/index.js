@@ -1,7 +1,8 @@
 export default class Traversal {
 
   constructor(props) {
-    this.pathArray = props.pathArray
+    this.pathArray = props.path
+    this.processTraverse = this.processTraverse.bind(this)
   }
 
   getPatterns(object, index) {
@@ -20,25 +21,25 @@ export default class Traversal {
     })
   }
 
-  traverse(callback, object, index = 0) {
+  traverse(object, index = 0, par = null) {
     const property = this.pathArray[index]
     if (!property) {
-      return callback(object, object)
+      return this.processTraverse(object, par, this.pathArray[index - 1])
     }
     if (property instanceof Array) {
-      return property.map(filteredProperty => this.traverse(callback, object[filteredProperty], index + 1))
+      return property.map(filteredProperty => this.traverse(object[filteredProperty], index + 1, object))
     }
     switch (property) {
       case '?':
         return Object.keys(object).map(key =>
-          this.traverse(callback, object[key], index + 1)
+          this.traverse(object[key], index + 1, object)
         )
       case '*':
         return this.getPatterns(object, index).map(searchedObject =>
-          this.traverse(callback, searchedObject, index + 1)
+          this.traverse(searchedObject, index + 1, object)
         )
       default:
-        return this.traverse(callback, object[property], index + 1)
+        return this.traverse(object[property], index + 1, object)
     }
   }
 }

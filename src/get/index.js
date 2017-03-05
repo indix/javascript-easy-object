@@ -1,15 +1,15 @@
 import Traversal from '../traversal';
 
-export default class Get {
+export default class Get extends Traversal{
 
   constructor(props) {
+    super(props)
     this.object = props.object
     this.path = props.path
     this.result = []
-    this.callback = this.callback.bind(this)
   }
 
-  callback(result) {
+  processTraverse(result) {
     if (!result && !this.result.length) {
       throw new Error('No value found for specified path')
     } else if (result) {
@@ -18,8 +18,7 @@ export default class Get {
   }
 
   get() {
-    const traversal = new Traversal({ pathArray: this.path })
-    traversal.traverse(this.callback, this.object)
+    this.traverse(this.object)
     if (this.result.length === 1) {
       return this.result[0]
     } else {
