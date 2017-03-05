@@ -2,12 +2,12 @@
 A module for handling all the action related to object in one step with multi pattern traversal.
 
 ### Traversal Patterns
-1. Direct method : 
+* Direct method : 
 This is direct access to value through the path string separated by the delimitor during the JEO object initialization.
 Eg. For accessing the value `e` in the object `{ a: 'b', c: { d: 'e' } }`, you can use path as `a\\.c\\.d`
 In above the delimitor is `\\.` which is the default value. You can change it by passing delimitor that you want during JEO object initialization.
 
-2. Filter method : 
+* Filter method : 
 This method allows you to pick certain key or pattern in the object.
 Eg.
 ```
@@ -32,7 +32,7 @@ output: ['z1', 'z3']
 
 ```
 
-3. One level skip method : 
+* One level skip method : 
 This method allows you to skip a level and search for the pattern that you want.
 Eg.
 ```
@@ -56,7 +56,8 @@ path : a.?.z
 output : ['z1', 'z2', 'z3']
 
 ```
-4. Any level skip method : 
+
+* Any level skip method : 
 This method allows you to pick the value for pattern without even knowing the path.
 Eg.
 ```
