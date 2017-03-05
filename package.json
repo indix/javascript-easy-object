@@ -16,7 +16,14 @@
     "url": "git+https://github.com/manishwaran/javascript-easy-object.git"
   },
   "keywords": [
-    "javascript"
+    "javascript object",
+    "javascript",
+    "manishwaran",
+    "javascript easy object",
+    "object",
+    "object pattern",
+    "pattern search",
+    "object search",
   ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
