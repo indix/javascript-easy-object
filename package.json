@@ -1,8 +1,8 @@
 {
   "name": "javascript-easy-object",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "mocha --opts ./mocha.opts",
     "build:watch": "babel src --out-dir lib --watch",
