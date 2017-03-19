@@ -1,6 +1,6 @@
 {
   "name": "javascript-easy-object",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
@@ -42,7 +42,7 @@
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^1.16.2"
   },
-  "author": "Manish",
+  "author": "Manishwaran",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/manishwaran/javascript-easy-object/issues"
