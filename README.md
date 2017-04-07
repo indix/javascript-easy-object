@@ -101,7 +101,7 @@ snippet :
 ```
 import JEO from 'javascript-easy-object'
 
-const jeo = new JEO('.')
+const jeo = new JEO('.') //delimitor value is optional. Default value is '\\.'
 const values = jeo.get(object, path)
 const modifiedObject = jeo.put(object, path, value)
 const propertyDeletedObject = jeo.delete(object, path)
