@@ -94,8 +94,9 @@ Above patterns can be composed with each other or can be used separately as per 
      2. Put
      3. Delete
      4. Rename
+     5. Get path
 ```
-Get, put, delete method are well known actions. Rename action allows you to rename the key that is present in the object.
+Get, put, delete method are well known actions. Rename action allows you to rename the key that is present in the object. Get-path allows you to specify any path traversal and it will return the path from root to the found element. Its return type is array of string(if more than one value found on traversal it will return all paths for those values).
 
 snippet :
 ```
@@ -106,6 +107,7 @@ const values = jeo.get(object, path)
 const modifiedObject = jeo.put(object, path, value)
 const propertyDeletedObject = jeo.delete(object, path)
 const renamedObject = jeo.rename(object, path, newName)
+const paths = jeo.getPath(object, path)
 ```
 
 ### Conclusion

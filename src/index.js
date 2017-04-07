@@ -3,6 +3,7 @@ import Get from './get'
 import Path from './path'
 import Rename from './rename'
 import Delete from './delete'
+import GetPath from './get-path'
 
 export default class JEO {
 
@@ -28,6 +29,11 @@ export default class JEO {
   rename(object, pathString, key) {
     const path = new Path(pathString, this.delimitor).getPath()
     return new Rename({ object, path, key }).renameKey()
+  }
+
+  getPath(object, pathString) {
+    const path = new Path(pathString, this.delimitor).getPath()
+    return new GetPath({ object, path, delimitor: this.delimitor }).getPath()
   }
 
 }
