@@ -98,12 +98,14 @@ Above patterns can be composed with each other or can be used separately as per 
 ```
 Get, put, delete method are well known actions. Rename action allows you to rename the key that is present in the object. Get-path allows you to specify any path traversal and it will return the path from root to the found element. Its return type is array of string(if more than one value found on traversal it will return all paths for those values).
 
+Get has `isSafe` option which lets to return value or null safely instead of getting error on unknown path. Its default value is false. It is the third option in get function.
+
 snippet :
 ```
 import JEO from 'javascript-easy-object'
 
 const jeo = new JEO('.') //delimitor value is optional. Default value is '\\.'
-const values = jeo.get(object, path)
+const values = jeo.get(object, path, true) // 3rd param is for isSafe mode
 const modifiedObject = jeo.put(object, path, value)
 const propertyDeletedObject = jeo.delete(object, path)
 const renamedObject = jeo.rename(object, path, newName)
