@@ -7,10 +7,11 @@ export default class Get extends Traversal{
     this.object = props.object
     this.path = props.path
     this.result = []
+    this.isSafe = props.isSafe
   }
 
   processTraverse(result) {
-    if (result === undefined && !this.result.length) {
+    if (!this.isSafe && result === undefined && !this.result.length) {
       throw new Error('No value found for specified path')
     } else if (result) {
       this.result.push(result)
@@ -19,11 +20,9 @@ export default class Get extends Traversal{
 
   get() {
     this.traverse(this.object)
-    if (this.result.length === 1) {
-      return this.result[0]
-    } else {
-      return this.result
-    }
+    if (!this.result.length) return null
+    if (this.result.length === 1) return this.result[0]
+    return this.result
   }
 
 }

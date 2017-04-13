@@ -11,9 +11,9 @@ export default class JEO {
     this.delimitor = delimitor || '\\.'
   }
 
-  get(object, pathString) {
+  get(object, pathString, isSafe = false) {
     const path = new Path(pathString, this.delimitor).getPath()
-    return new Get({ object, path }).get()
+    return new Get({ object, path, isSafe }).get()
   }
 
   put(object, pathString, value) {

@@ -3,6 +3,7 @@ export default class Traversal {
   constructor(props) {
     this.pathArray = props.path
     this.processTraverse = this.processTraverse.bind(this)
+    this.isSafe = props.isSafe || false
   }
 
   getPatterns(object, index, path) {
@@ -23,25 +24,31 @@ export default class Traversal {
   }
 
   traverse(object, index = 0, par = null, path = []) {
-    const newPath = path.slice()
-    const property = this.pathArray[index]
-    if (!property) {
-      return this.processTraverse(object, par, this.pathArray[index - 1], path)
-    }
-    if (property instanceof Array) {
-      return property.map(filteredProperty => this.traverse(object[filteredProperty], index + 1, object, newPath.concat(filteredProperty)))
-    }
-    switch (property) {
-      case '?':
+    try {
+      const newPath = path.slice()
+      const property = this.pathArray[index]
+      if (!property) {
+        return this.processTraverse(object, par, this.pathArray[index - 1], path)
+      }
+      if (property instanceof Array) {
+        return property.map(filteredProperty => this.traverse(object[filteredProperty], index + 1, object, newPath.concat(filteredProperty)))
+      }
+      switch (property) {
+        case '?':
         return Object.keys(object).map(key =>
           this.traverse(object[key], index + 1, object, newPath.concat(key))
         )
-      case '*':
+        case '*':
         return this.getPatterns(object, index, newPath).map(searchedObject =>
           this.traverse(searchedObject.object, index + 1, object, searchedObject.path)
         )
-      default:
+        default:
         return this.traverse(object[property], index + 1, object, newPath.concat(property))
+      }
+    }
+    catch (e) {
+      if (!this.isSafe) throw new Error('Unknown path specified')
+      else return;
     }
   }
 }

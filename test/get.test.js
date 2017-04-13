@@ -68,4 +68,11 @@ describe('JS easy object Get', () => {
     done()
   })
 
+  it('should should return null for unknown path when it is in safe mode', (done) => {
+    const jeo = new JEO()
+    const result = jeo.get({ a: 'a' }, 'a\\.b\\.c\\.d', true)
+    expect(result).to.be.equal(null)
+    done()
+  })
+
 })
