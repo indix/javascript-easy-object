@@ -13,7 +13,7 @@ export default class Get extends Traversal{
   processTraverse(result) {
     if (!this.isSafe && result === undefined && !this.result.length) {
       throw new Error('No value found for specified path')
-    } else if (result) {
+    } else if (result != undefined) {
       this.result.push(result)
     }
   }
